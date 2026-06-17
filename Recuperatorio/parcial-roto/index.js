@@ -82,6 +82,19 @@ function ordenarMayorAMenor(e) {
     let elementoClickeado = e.target;
     let divContenedor = elementoClickeado.closest('div');
     let elementoLista = divContenedor.nextElementSibling;
+
+    // Ordenamiento.
+    let productos = Array.from(elementoLista.children);
+    productos.sort((a, b) => {
+        let textoPrecioA = a.querySelector('.precio-producto').textContent;
+        let precioA = parseInt(textoPrecioA.replace('$', ''));
+        let textoPrecioB = b.querySelector('.precio-producto').textContent;
+        let precioB = parseInt(textoPrecioB.replace('$', ''));
+
+        return precioB - precioA;
+    });
+
+    productos.forEach(producto => elementoLista.appendChild(producto));
 }
 
 //--- Funcion para ordenar productos de menor a mayor precio ---//
@@ -89,6 +102,19 @@ function ordenarMenorAMayor(e) {
     let elementoClickeado = e.target;
     let divContenedor = elementoClickeado.closest('div');
     let elementoLista = divContenedor.nextElementSibling;
+
+    // Ordenamiento.
+    let productos = Array.from(elementoLista.children);
+    productos.sort((a, b) => {
+        let textoPrecioA = a.querySelector('.precio-producto').textContent;
+        let precioA = parseInt(textoPrecioA.replace('$', ''));
+        let textoPrecioB = b.querySelector('.precio-producto').textContent;
+        let precioB = parseInt(textoPrecioB.replace('$', ''));
+
+        return precioA - precioB;
+    });
+
+    productos.forEach(producto => elementoLista.appendChild(producto));
 }
 
 //--- Funcion para mostrar/ocultar las calorías de las hamburguesas ---//
